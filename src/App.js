@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import PropTypes from "prop-types";
+import Button from "./components/button";
+import "./App.css";
+import { store, cart } from "./data/index";
+import Store from "./views/Store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    storeData: [],
+    cartData: []
+  };
+
+  componentDidMount() {
+    this.setState({
+      storeData: store,
+      cartData: cart
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Store store={this.state.storeData} />
+      </div>
+    );
+  }
 }
 
 export default App;
