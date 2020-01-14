@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "./components/button";
 import "./App.css";
 import { store, cart } from "./data/index";
 import Store from "./views/Store";
+import Nav from "./components/Nav";
 
 class App extends Component {
   state = {
@@ -21,9 +23,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Store store={this.state.storeData} />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Nav>
+            <Route
+              exact
+              path="/"
+              render={() => <Store store={this.state.storeData} />}
+            />
+          </Nav>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

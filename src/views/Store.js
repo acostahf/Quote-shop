@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StoreCard from "../components/StoreCard";
+import { StyledStoreCardContainer } from "../styles/StyledStoreCardContainer";
 
 function Store({ store }) {
   const storeCards = store.map(
@@ -15,7 +16,7 @@ function Store({ store }) {
       />
     )
   );
-  return storeCards;
+  return <StyledStoreCardContainer>{storeCards} </StyledStoreCardContainer>;
 }
 
 export default Store;
